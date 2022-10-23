@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.newlecture</groupId>
+	<artifactId>javaprj</artifactId>
+	<packaging>war</packaging> <!--여길 바꾸면 웹프젝으로도 바꿀 수있다...-->
+	<version>1.0-SNAPSHOT</version> <!-- 이건 c드라이브 tomcat9에 root/web-inf 가서 web.xml 긁어온것 웹으로 바꾸면 필요하다. -->
+	<name>javaprj</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<!-- 라이브러리와 같은 역할을 하는 걸 모아두는곳이다..!!! 이젠 빌드패스 가서 라이브러리 추가 안해줘도됨. 그건 절대경로로 lib 가져오는거기 때문에. 협업에 불리함 여기는 추가만 해 주면 알아서 자체적으로 다운로드함 -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!--${user.home}/.m2/repository 
+		이게 .m2에 저장하겠다는거. 모든 maven lib는 
+		여기에 저장됨 
+		maven repository 치고 홈페이지 들어가면 다나옴
+		
+		https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api
+		여기가면 톰캣 버젼에 따른 jsp 라이브러리 다운받을 수 있다...
+		-->
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jsp-api -->
+
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jsp-api</artifactId>
+			<version>9.0.68</version>
+		</dependency>
+		<dependency>
+			<groupId>com.newlecture</groupId>
+			<artifactId>examlib</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<!--<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>-->
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version> <!--war로 바꿨으니 플러그인 필요 -->
+			</plugin>
+		</plugins>
+	</build>
+	<!--	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build> -->
+</project>
